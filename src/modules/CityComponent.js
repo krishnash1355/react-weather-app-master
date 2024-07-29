@@ -40,14 +40,15 @@ const SearchBox = styled.form`
   }
 `;
 
-const CityComponent = function () {
+const CityComponent = function (props) {
+    const {updateCity,fetchWeather}=props;
   return (
     <>
       <WeatherLogo src="./icons/perfect-day.svg"></WeatherLogo>
       <ChooseCityLabel>Find Weather of your City</ChooseCityLabel>
-      <SearchBox>
-        <input placeholder="Enter City Name"></input>
-        <button>Search</button>
+      <SearchBox onSubmit={fetchWeather}>
+        <input placeholder="Enter City Name" onChange={(e)=>updateCity(e.target.value)}></input>
+        <button type="submit">Search</button>
       </SearchBox>
     </>
   );
